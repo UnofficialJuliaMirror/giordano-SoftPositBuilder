@@ -15,7 +15,13 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir/SoftPosit-*/build/Linux-x86_64-GCC/
-make julia
+if [[ "${target}" == *darwin* ]]; then
+    make COMPILER="$CC" SLIB=".dylib" julia
+elif [[ "${target}" == *mingw* ]]; then
+    make COMPILER="$CC" SLIB=".dll" julia
+else
+    make julia
+fi
 cp softposit.* $prefix/
 """
 
@@ -23,7 +29,9 @@ cp softposit.* $prefix/
 # platforms are passed in on the command line
 platforms = [
     Linux(:x86_64, libc=:glibc),
-    FreeBSD(:x86_64)
+    FreeBSD(:x86_64),
+    MacOS(:x86_64),
+    Windows(:x86_64)
 ]
 
 # The products that we will ensure are always built

@@ -7,18 +7,16 @@ version = v"0.4.1"
 
 # Collection of sources required to build SoftPosit
 sources = [
-    "https://gitlab.com/cerlane/SoftPosit/-/archive/0.4.1/SoftPosit-0.4.1.tar.gz" =>
+    "https://gitlab.com/cerlane/SoftPosit/-/archive/$version/SoftPosit-$version.tar.gz" =>
     "13f7360c5b91ad3704f66537a754ba3748a764e1291eaa33940866ca37c7dbf5",
 
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd $WORKSPACE/srcdir
-cd SoftPosit-0.4.1/build/Linux-x86_64-GCC/
+cd $WORKSPACE/srcdir/SoftPosit-*/build/Linux-x86_64-GCC/
 make julia
 cp softposit.* $prefix/
-
 """
 
 # These are the platforms we will build for by default, unless further

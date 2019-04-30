@@ -22,7 +22,8 @@ elif [[ "${target}" == *mingw* ]]; then
 else
     make julia
 fi
-cp softposit.* $prefix/
+mkdir -p $prefix/lib
+cp softposit.* $prefix/lib/.
 """
 
 # These are the platforms we will build for by default, unless further

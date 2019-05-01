@@ -9,16 +9,17 @@ version = v"0.4.1"
 sources = [
     "https://gitlab.com/cerlane/SoftPosit/-/archive/$version/SoftPosit-$version.tar.gz" =>
     "13f7360c5b91ad3704f66537a754ba3748a764e1291eaa33940866ca37c7dbf5",
-
+    "./patches"
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir/SoftPosit-*/build/Linux-x86_64-GCC/
+patch -p1 < $WORKSPACE/srcdir/makefile.patch
 if [[ "${target}" == *darwin* ]]; then
-    make COMPILER="$CC" SLIB=".dylib" julia
+    make SLIB=".dylib" julia
 elif [[ "${target}" == *mingw* ]]; then
-    make COMPILER="$CC" SLIB=".dll" julia
+    make SLIB=".dll" julia
 else
     make julia
 fi

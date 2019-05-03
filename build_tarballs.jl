@@ -7,8 +7,8 @@ version = v"0.4.1"
 
 # Collection of sources required to build SoftPosit
 sources = [
-    "https://gitlab.com/cerlane/SoftPosit/-/archive/$version/SoftPosit-$version.tar.gz" =>
-    "13f7360c5b91ad3704f66537a754ba3748a764e1291eaa33940866ca37c7dbf5",
+    "https://gitlab.com/cerlane/SoftPosit/-/archive/$version/SoftPosit-5d7f037eef37fac2790fc51a6f53bd6dfe32c2cb.tar.gz" =>
+    "303f7f9678e43d897527a0246b47cbab416a9a1fbe0ed7d3d8f1826c2093677f",
     "./patches"
 ]
 
